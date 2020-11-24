@@ -1,12 +1,36 @@
-<h2>{{hero.name | uppercase}} Details</h2>
+<h2>My Heroes</h2>
 
-<div><span>Id: </span>{{hero.id}}</div>
+<!-- *ngFor | is just for each loop over heroes which is defined in heros.component.ts -->
+<!-- (click) when this component is clicked run the given function -->
+<!-- [class.selected] not sure why it needs to be in brackets? But allows for condional css class based of the given condition which is pretty cool-->
+<ul class = "heroes">
+    <li *ngFor="let hero of heroes" 
+        (click)="onSelect(hero)" 
+        [class.selected]="hero === selectedHero">
+        <span class = "badge">{{hero.id}}</span> {{hero.name}}
+    </li>
+</ul>
 
-<div>
-    <label>
-        Name:
-        <input [(ngModel)]="hero.name" placeholder="name"/>        
-    </label>
+<!-- *ngIf= | means if the selectedHero property of heros exist then show this container -->
+<!-- if the condition is false it does not even attempt to load this component so it's not just hidden-->
+<div *ngIf="selectedHero">
+
+    <h2>{{selectedHero.name | uppercase}} Details</h2>
+
+    <!-- Display the ID followed by an input for the name (bound to selectedHero.name) followed by the slectedHero power -->
+    <div>
+        <span><b>ID: </b></span>{{selectedHero.id}}
+    </div>
+
+    <div>
+        <label>
+            <b>Name: </b>
+            <input [(ngModel)]="selectedHero.name" placeholder="selectedHero.name" />
+        </label>    
+    </div>
+
+    <div>
+        <span><b>Power: </b></span>{{selectedHero.power}}
+    </div>
+    
 </div>
-
-<div><span>Power: </span>{{hero.power}}</div>
