@@ -11,30 +11,5 @@
     </li>
 </ul>
 
-<!-- *ngIf= | means if the selectedHero property of heros exist then show this container -->
-<!-- if the condition is false it does not even attempt to load this component so it's not just hidden-->
-<div *ngIf="selectedHero">
+<app-hero-detail [hero]="selectedHero"></app-hero-detail>
 
-    <h2>{{selectedHero.name | uppercase}} Details</h2>
-
-    <!-- Display the ID followed by an input for the name (bound to selectedHero.name) followed by the slectedHero power -->
-    <div>
-        <span><b>ID: </b></span>{{selectedHero.id}}
-    </div>
-
-    <div>
-        <label>
-            <b>Name: </b>
-            <input [(ngModel)]="selectedHero.name" placeholder="selectedHero.name" />
-        </label>    
-    </div>
-
-    <div>
-        <span><b>Power: </b></span>{{selectedHero.power}}
-    </div>
-
-    <div>
-        <input [(ngModel)]="selectedHero.power" placeholder="selectedHero.power" />
-    </div>
-    
-</div>
