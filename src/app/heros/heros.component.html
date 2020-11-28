@@ -4,12 +4,11 @@
 <!-- (click) when this component is clicked run the given function -->
 <!-- [class.selected] not sure why it needs to be in brackets? But allows for condional css class based of the given condition which is pretty cool-->
 <ul class = "heroes">
-    <li *ngFor="let hero of heroes" 
-        (click)="onSelect(hero)" 
-        [class.selected]="hero === selectedHero">
-        <span class = "badge">{{hero.id}}</span> {{hero.name}}
+    <li *ngFor="let hero of heroes">
+        <a routerLink="/detail/{{hero.id}}">
+            <span class = "badge">{{hero.id}}</span> {{hero.name}}
+        </a>
     </li>
 </ul>
 
-<app-hero-detail [hero]="selectedHero"></app-hero-detail>
 
