@@ -1,5 +1,13 @@
 <h2>My Heroes</h2>
-
+<div>
+    <label>Hero name:
+      <input #heroName />
+    </label>
+    <!-- (click) passes input value to add() and then clears the input -->
+    <button (click)="add(heroName.value); heroName.value=''">
+      add
+    </button>
+</div>
 <!-- *ngFor | is just for each loop over heroes which is defined in heros.component.ts -->
 <!-- (click) when this component is clicked run the given function -->
 <!-- [class.selected] not sure why it needs to be in brackets? But allows for condional css class based of the given condition which is pretty cool-->
@@ -8,6 +16,8 @@
         <a routerLink="/detail/{{hero.id}}">
             <span class = "badge">{{hero.id}}</span> {{hero.name}}
         </a>
+        <button class="delete" title="delete hero"
+            (click)="delete(hero)">x</button>
     </li>
 </ul>
 
